@@ -1,8 +1,7 @@
 # EstruturasDeDadosCSharp
-## #Autor: Pedro Henrique </br>Email: pedropires2603@gmail.com
+### Autor: Pedro Henrique </br>Email: pedropires2603@gmail.com
 
-
-</br></br>
+</br>
 
 ## Descrição
 
