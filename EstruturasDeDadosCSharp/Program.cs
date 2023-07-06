@@ -15,7 +15,7 @@ Pessoa MariaSousa = new Pessoa("Maria Sousa", 25);
 Pessoa JuliaAlmeida = new Pessoa("Júlia Almeida", 28);
 
 // ---------- Lista Encadeada ----------
-ListaEncadeada lista = new ListaEncadeada(ListaTipos.Recursiva);
+ListaEncadeada lista = new ListaEncadeada();
 
 
 // ---------- Testes ----------

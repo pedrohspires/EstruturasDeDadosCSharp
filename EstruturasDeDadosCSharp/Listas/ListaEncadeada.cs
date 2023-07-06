@@ -18,12 +18,6 @@ namespace EstruturasDeDadosCSharp.Listas
     {
         private Node? Inicio = null;
         private int Tamanho = 0;
-        private ListaTipos TipoLista;
-
-        public ListaEncadeada(ListaTipos tipoLista = ListaTipos.Iterativa)
-        {
-            this.TipoLista = tipoLista;
-        }
 
         public void AdicionaFinal(Pessoa pessoa)
         {
