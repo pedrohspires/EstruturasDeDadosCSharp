@@ -17,7 +17,35 @@ namespace EstruturasDeDadosCSharp.Listas
     public class ListaEncadeada : IListas
     {
         private Node? Inicio = null;
-        private int Tamanho = 0;
+        private int TamanhoLista = 0;
+
+        public int Tamanho()
+        {
+            return TamanhoLista;
+        }
+
+        public Pessoa? Busca(string nomeBusca)
+        {
+            if (Tamanho() == 0)
+                return null;
+
+
+            Node? node = Inicio;
+            while (node != null)
+            {
+                if (node.Pessoa.Nome.Equals(nomeBusca))
+                    return node.Pessoa;
+
+                node = node.Proximo;
+            }
+
+            return null;
+        }
+
+        public bool Vazia()
+        {
+            return Tamanho() == 0;
+        }
 
         public void AdicionaFinal(Pessoa pessoa)
         {
@@ -26,7 +54,7 @@ namespace EstruturasDeDadosCSharp.Listas
             if (Inicio == null)
             {
                 Inicio = new Node(pessoa);
-                Tamanho++;
+                TamanhoLista++;
                 return;
             }
 
@@ -35,7 +63,7 @@ namespace EstruturasDeDadosCSharp.Listas
                 node = node.Proximo;
 
             node.Proximo = new Node(pessoa);
-            Tamanho++;
+            TamanhoLista++;
         }
 
         public void AdicionaInicio(Pessoa pessoa)
@@ -43,7 +71,7 @@ namespace EstruturasDeDadosCSharp.Listas
             Console.WriteLine($"Adicionando {pessoa.Nome} no início...");
 
             Inicio = new Node(pessoa, Inicio);
-            Tamanho++;
+            TamanhoLista++;
         }
 
         public void Adiciona(Pessoa pessoa, string nomeBusca)
@@ -53,7 +81,7 @@ namespace EstruturasDeDadosCSharp.Listas
             if (Inicio == null || Inicio.Pessoa.Nome.Equals(nomeBusca))
             {
                 Inicio = new Node(pessoa, Inicio);
-                Tamanho++;
+                TamanhoLista++;
                 return;
             }
 
@@ -67,12 +95,12 @@ namespace EstruturasDeDadosCSharp.Listas
             }
 
             node.Proximo = new Node(pessoa, node.Proximo);
-            Tamanho++;
+            TamanhoLista++;
         }
 
         public Pessoa? RemoveFinal()
         {
-            if (Tamanho == 0 || Inicio == null)
+            if (TamanhoLista == 0 || Inicio == null)
             {
                 Console.WriteLine("Erro ao remover no final: Lista Vazia");
                 return null;
@@ -90,18 +118,18 @@ namespace EstruturasDeDadosCSharp.Listas
             if (nodeAnterior == null)
             {
                 Inicio = null;
-                Tamanho--;
+                TamanhoLista--;
                 return node?.Pessoa;
             }
 
             nodeAnterior.Proximo = null;
-            Tamanho--;
+            TamanhoLista--;
             return node?.Pessoa;
         }
 
         public Pessoa? RemoveInicio()
         {
-            if (Tamanho == 0 || Inicio == null)
+            if (TamanhoLista == 0 || Inicio == null)
             {
                 Console.WriteLine("Erro ao remover no início: Lista Vazia");
                 return null;
@@ -115,13 +143,13 @@ namespace EstruturasDeDadosCSharp.Listas
             }
 
             Inicio = new Node(node.Proximo.Pessoa, node?.Proximo.Proximo);
-            Tamanho--;
+            TamanhoLista--;
             return node?.Pessoa;
         }
 
         public Pessoa? Remove(string nomeBusca)
         {
-            if (Tamanho == 0 || Inicio == null)
+            if (TamanhoLista == 0 || Inicio == null)
             {
                 Console.WriteLine("Erro ao remover no início: Lista Vazia");
                 return null;
@@ -148,12 +176,12 @@ namespace EstruturasDeDadosCSharp.Listas
             if (nodeAnterior == null)
             {
                 Inicio = Inicio.Proximo;
-                Tamanho--;
+                TamanhoLista--;
                 return nodeAtual.Pessoa;
             }
 
             nodeAnterior.Proximo = nodeAtual.Proximo;
-            Tamanho--;
+            TamanhoLista--;
             return nodeAtual.Pessoa;
         }
 
@@ -161,7 +189,7 @@ namespace EstruturasDeDadosCSharp.Listas
         {
             Console.WriteLine();
             Console.WriteLine("----------- Lista Encadeada -----------");
-            Console.WriteLine($"Tamanho: {Tamanho}");
+            Console.WriteLine($"Tamanho: {Tamanho()}");
 
             Node? node = Inicio;
             int count = 1;
