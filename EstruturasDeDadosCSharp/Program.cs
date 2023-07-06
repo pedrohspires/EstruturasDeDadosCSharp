@@ -19,12 +19,19 @@ ListaEncadeada lista = new ListaEncadeada();
 
 
 // ---------- Testes ----------
+Console.WriteLine("---------- Inserções ----------");
 lista.AdicionaFinal(PedroHenrique);
 lista.AdicionaFinal(MariaSousa);
 lista.AdicionaInicio(JoaoSilva);
 lista.Adiciona(JuliaAlmeida, JoaoSilva.Nome);
 lista.Print();
 
+Console.WriteLine("---------- Busca ----------");
+Pessoa? pessoaBuscada = lista.Busca(PedroHenrique.Nome);
+pessoaBuscada?.Apresentese();
+Console.WriteLine();
+
+Console.WriteLine("---------- Remoções ----------");
 Pessoa? pessoaRemovida = lista.Remove(PedroHenrique.Nome);
 pessoaRemovida?.Apresentese();
 pessoaRemovida = lista.Remove(JoaoSilva.Nome);
